@@ -4,6 +4,7 @@ package org.example.http.controller;
 
 import jakarta.validation.groups.Default;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.database.entity.Role;
 import org.example.dto.UserCreateEditDto;
 import org.example.dto.UserFilter;
@@ -20,12 +21,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+@Slf4j
 @Controller
 @RequestMapping("/users")
 @RequiredArgsConstructor//
 public class UserController {
     private final UserService userService;
     private final CompanyService companyService;
+
+
 
     @GetMapping()
     public String findAll(Model model, UserFilter filter, Pageable pageable) {
